@@ -1,4 +1,4 @@
-package com.algaworks.osworks.osworksapi;
+package com.algaworks.osworks.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
