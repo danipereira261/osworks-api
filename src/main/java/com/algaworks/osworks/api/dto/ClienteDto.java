@@ -1,14 +1,11 @@
-package com.algaworks.osworks.api.domain.model;
+package com.algaworks.osworks.api.dto;
 
 import lombok.Data;
 
 @Data
-public class Cliente {
+public class ClienteDto {
 
-    private Long id;
     private String nome;
     private String email;
     private String telefone;
-
-
 }
