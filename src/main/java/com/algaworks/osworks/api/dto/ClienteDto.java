@@ -33,4 +33,20 @@ public class ClienteDto {
         }
         return clienteDtos;
     }
+
+    public static ClienteModel converterToModel(ClienteDto clienteDto){
+        ClienteModel clienteModel = new ClienteModel();
+        clienteModel.setNome(clienteDto.getNome());
+        clienteModel.setEmail(clienteDto.getEmail());
+        clienteModel.setTelefone(clienteDto.getTelefone());
+        return clienteModel;
+    }
+
+    public static ClienteDto converterToDto(ClienteModel clienteModel){
+        ClienteDto clienteDto = new ClienteDto();
+        clienteDto.setNome(clienteModel.getNome());
+        clienteDto.setEmail(clienteModel.getEmail());
+        clienteDto.setTelefone(clienteModel.getTelefone());
+        return clienteDto;
+    }
 }
