@@ -15,8 +15,13 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
-    @GetMapping("/clientes")
-    public List<ClienteDto> listar() {
-        return clienteService.buscarTodos();
+    @GetMapping("/clientes/jpa")
+    public List<ClienteDto> listarJPA() {
+        return clienteService.buscarTodosComJPA();
+    }
+
+    @GetMapping("/clientes/jpql")
+    public List<ClienteDto> listarJPQL() {
+        return clienteService.buscarTodosComJPQL();
     }
 }
