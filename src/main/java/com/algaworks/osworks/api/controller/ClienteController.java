@@ -1,39 +1,50 @@
 package com.algaworks.osworks.api.controller;
 
 import com.algaworks.osworks.api.dto.ClienteDto;
-import com.algaworks.osworks.api.model.ClienteModel;
-import com.algaworks.osworks.api.service.ClienteService;
+import com.algaworks.osworks.api.service.ClienteServiceDelete;
+import com.algaworks.osworks.api.service.ClienteServiceGet;
+import com.algaworks.osworks.api.service.ClienteServicePost;
+import com.algaworks.osworks.api.service.ClienteServicePut;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/v1/clientes")
 public class ClienteController {
 
     @Autowired
-    private ClienteService clienteService;
+    private ClienteServiceDelete clienteServiceDelete;
+
+    @Autowired
+    private ClienteServiceGet clienteServiceGet;
+
+    @Autowired
+    private ClienteServicePost clienteServicePost;
+
+    @Autowired
+    private ClienteServicePut clienteServicePut;
 
     @GetMapping("/buscar/jpa")
-    public List<ClienteDto> listarJPA() {
-        return clienteService.buscarTodosComJPA();
+    public ResponseEntity<List<ClienteDto>> listarJPA() {
+        return new ResponseEntity<>(clienteServiceGet.buscarTodosComJPA(), HttpStatus.OK);
     }
 
     @GetMapping("/buscar/jpql")
-    public List<ClienteDto> listarJPQL() {
-        return clienteService.buscarTodosComJPQL();
+    public ResponseEntity<List<ClienteDto>> listarJPQL() {
+        return new ResponseEntity<>(clienteServiceGet.buscarTodosComJPQL(), HttpStatus.OK) ;
     }
 
     @GetMapping("/buscar/{id}")
-    public ResponseEntity<ClienteDto> buscar(@PathVariable long id){
-        return clienteService.buscarUm(id);
+    public ResponseEntity<ClienteDto> buscar(@PathVariable long id) {
+        return new ResponseEntity<>(clienteServiceGet.buscarUm(id), HttpStatus.OK);
     }
 
     @PostMapping("/salvar")
-    public void salvar(@RequestBody ClienteDto clienteDto){
-        clienteService.salvar(clienteDto);
+    public void salvar(@RequestBody ClienteDto clienteDto) {
+        clienteServicePost.salvar(clienteDto);
     }
 }
