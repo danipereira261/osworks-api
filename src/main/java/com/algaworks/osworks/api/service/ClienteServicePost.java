@@ -1,6 +1,7 @@
 package com.algaworks.osworks.api.service;
 
 import com.algaworks.osworks.api.dto.ClienteDto;
+import com.algaworks.osworks.api.model.ClienteModel;
 import com.algaworks.osworks.api.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,6 @@ public class ClienteServicePost {
     private ClienteRepository clienteRepository;
 
     public void salvar(ClienteDto clienteDto) {
-        clienteRepository.save(ClienteDto.converterToModel(clienteDto));
+        clienteRepository.save(ClienteModel.converterToModel(clienteDto));
     }
 }

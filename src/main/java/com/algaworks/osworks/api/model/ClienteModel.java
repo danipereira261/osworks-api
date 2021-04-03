@@ -1,5 +1,6 @@
 package com.algaworks.osworks.api.model;
 
+import com.algaworks.osworks.api.dto.ClienteDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,4 +28,14 @@ public class ClienteModel {
 
     @Column
     private String telefone;
+
+    public static ClienteModel converterToModel(ClienteDto clienteDto) {
+
+        return ClienteModel
+                .builder()
+                .nome(clienteDto.getNome())
+                .email(clienteDto.getEmail())
+                .telefone(clienteDto.getTelefone())
+                .build();
+    }
 }

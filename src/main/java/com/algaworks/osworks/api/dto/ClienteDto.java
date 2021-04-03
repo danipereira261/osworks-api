@@ -30,16 +30,6 @@ public class ClienteDto {
         return clienteDtos;
     }
 
-    public static ClienteModel converterToModel(ClienteDto clienteDto) {
-
-        return ClienteModel
-                .builder()
-                .nome(clienteDto.getNome())
-                .email(clienteDto.getEmail())
-                .telefone(clienteDto.getTelefone())
-                .build();
-    }
-
     public static ClienteDto converterToDto(ClienteModel clienteModel) {
 
         return ClienteDto
